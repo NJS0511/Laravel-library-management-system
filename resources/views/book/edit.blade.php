@@ -43,17 +43,17 @@
                         </div>
                         <div class="form-group">
                             <label>Author</label>
-                            <select class="form-control @error('auther_id') isinvalid @enderror " name="author_id">
+                            <select class="form-control @error('author_id') isinvalid @enderror " name="author_id">
                                 <option value="">Select Author</option>
                                 @foreach ($authors as $auther)
-                                    @if ($auther->id == $book->auther_id)
+                                    @if ($auther->id == $book->author_id)
                                         <option value="{{ $auther->id }}" selected>{{ $auther->name }}</option>
                                     @else
                                         <option value="{{ $auther->id }}">{{ $auther->name }}</option>
                                     @endif
                                 @endforeach
                             </select>
-                            @error('auther_id')
+                            @error('author_id')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}
                                 </div>

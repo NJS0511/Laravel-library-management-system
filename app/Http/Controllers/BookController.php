@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\book;
 use App\Http\Requests\StorebookRequest;
 use App\Http\Requests\UpdatebookRequest;
-use App\Models\auther;
+use App\Models\author;
 use App\Models\category;
 use App\Models\publisher;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -32,7 +33,7 @@ class BookController extends Controller
     public function create()
     {
         return view('book.create',[
-            'authors' => auther::latest()->get(),
+            'authors' => author::latest()->get(),
             'publishers' => publisher::latest()->get(),
             'categories' => category::latest()->get(),
         ]);
@@ -44,10 +45,22 @@ class BookController extends Controller
      * @param  \App\Http\Requests\StorebookRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorebookRequest $request)
+    public function store(Request $request)
     {
-        book::create($request->validated() + [
-            'status' => 'Y'
+        $author = author::create([
+            'name' => $request->author_id
+        ]);
+        $category = category::create([
+            'name' => $request->category_id
+        ]);
+        $publisher = publisher::create([
+            'name' => $request->publisher_id
+        ]);
+        book::create([
+            'name' => $request->name,
+            'author_id' => $author->id,
+            'category_id' => $category->id,
+            'publisher_id' => $publisher->id,
         ]);
         return redirect()->route('books');
     }
@@ -62,7 +75,7 @@ class BookController extends Controller
     public function edit(book $book)
     {
         return view('book.edit',[
-            'authors' => auther::latest()->get(),
+            'authors' => author::latest()->get(),
             'publishers' => publisher::latest()->get(),
             'categories' => category::latest()->get(),
             'book' => $book
@@ -80,7 +93,7 @@ class BookController extends Controller
     {
         $book = book::find($id);
         $book->name = $request->name;
-        $book->auther_id = $request->author_id;
+        $book->author_id = $request->author_id;
         $book->category_id = $request->category_id;
         $book->publisher_id = $request->publisher_id;
         $book->save();

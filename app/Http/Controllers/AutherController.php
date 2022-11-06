@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\auther;
+use App\Models\author;
 use App\Http\Requests\StoreautherRequest;
 use App\Http\Requests\UpdateautherRequest;
 
@@ -15,8 +15,8 @@ class AutherController extends Controller
      */
     public function index()
     {
-        return view('auther.index', [
-            'authors' => auther::Paginate(5)
+        return view('author.index', [
+            'authors' => author::Paginate(5)
         ]);
     }
 
@@ -38,7 +38,7 @@ class AutherController extends Controller
      */
     public function store(StoreautherRequest $request)
     {
-        auther::create($request->validated());
+        author::create($request->validated());
 
         return redirect()->route('authors');
     }
@@ -48,7 +48,7 @@ class AutherController extends Controller
      * @param  \App\Models\auther  $auther
      * @return \Illuminate\Http\Response
      */
-    public function edit(auther $auther)
+    public function edit(author $auther)
     {
         return view('auther.edit', [
             'auther' => $auther
@@ -64,7 +64,7 @@ class AutherController extends Controller
      */
     public function update(UpdateautherRequest $request, $id)
     {
-        $auther = auther::find($id);
+        $auther = author::find($id);
         $auther->name = $request->name;
         $auther->save();
 
@@ -78,7 +78,7 @@ class AutherController extends Controller
      */
     public function destroy($id)
     {
-        auther::findorfail($id)->delete();
+        author::findorfail($id)->delete();
         return redirect()->route('authors');
     }
 }

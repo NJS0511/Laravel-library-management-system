@@ -19,7 +19,7 @@ class book extends Model
      */
     public function auther(): BelongsTo
     {
-        return $this->belongsTo(auther::class,'auther_id','id');
+        return $this->belongsTo(author::class,'author_id','id');
     }
 
     /**

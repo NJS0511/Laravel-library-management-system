@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\student;
 use App\Http\Requests\StorestudentRequest;
 use App\Http\Requests\UpdatestudentRequest;
+use App\Notifications\RegistrationSuccess;
+use Illuminate\Support\Facades\Notification;
 
 class StudentController extends Controller
 {
@@ -38,7 +40,9 @@ class StudentController extends Controller
      */
     public function store(StorestudentRequest $request)
     {
-        student::create($request->validated());
+        $student = student::create($request->validated());
+
+        Notification::route('mail', $student->email)->notify(new RegistrationSuccess());
 
         return redirect()->route('students');
     }

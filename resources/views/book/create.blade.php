@@ -26,12 +26,7 @@
                         </div>
                         <div class="form-group">
                             <label>Category</label>
-                            <select class="form-control @error('category_id') isinvalid @enderror " name="category_id" required>
-                                <option value="">Select Category</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control @error('category_id') isinvalid @enderror " placeholder="Category" name="category_id" required>
                             @error('category_id')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}
@@ -40,13 +35,8 @@
                         </div>
                         <div class="form-group">
                             <label>Author</label>
-                            <select class="form-control @error('auther_id') isinvalid @enderror " name="auther_id" required>
-                                <option value="">Select Author</option>
-                                @foreach ($authors as $author)
-                                    <option value='{{ $author->id }}'>{{ $author->name }}</option>";
-                                @endforeach
-                            </select>
-                            @error('auther_id')
+                            <input type="text" class="form-control @error('author_id') isinvalid @enderror " placeholder="Author" name="author_id" required>
+                            @error('author_id')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}
                                 </div>
@@ -54,12 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label>Publisher</label>
-                            <select class="form-control @error('publisher_id') isinvalid @enderror " name="publisher_id" required>
-                                <option value="">Select Publisher</option>
-                                @foreach ($publishers as $publisher)
-                                    <option value='{{ $publisher->id }}'>{{ $publisher->name }}</option>";
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control @error('publisher_id') isinvalid @enderror " placeholder="Publisher" name="publisher_id" required>
                             @error('publisher_id')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}

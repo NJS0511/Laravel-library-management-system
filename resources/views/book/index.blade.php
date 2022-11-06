@@ -44,11 +44,17 @@
                                         <a href="{{ route('book.edit', $book) }}" class="btn btn-success">Edit</a>
                                     </td>
                                     <td class="delete">
-                                        <form action="{{ route('book.destroy', $book) }}" method="post"
-                                            class="form-hidden">
-                                            <button class="btn btn-danger delete-book">Delete</button>
-                                            @csrf
-                                        </form>
+                                        @if ($book->status == 'Y')
+                                            <form action="{{ route('book.destroy', $book) }}" method="post" class="form-hidden">
+                                                <button class="btn btn-danger">Delete</button>
+                                        @csrf    
+                                            </form>
+                                        @else
+                                            <button onclick="myFunction()" class="btn btn-danger">Delete</button>
+                                            <script>function myFunction() {alert("Cannot Delete. The book was rented");}</script>
+                                        @endif
+
+                                        
                                     </td>
                                 </tr>
                             @empty

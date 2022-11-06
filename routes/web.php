@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\AutherController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookIssueController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\PublisherController;
@@ -33,9 +34,9 @@ Route::post('/Change-password', [LoginController::class, 'changePassword'])->nam
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('change-password',[dashboardController::class,'change_password_view'])->name('change_password_view');
-    Route::post('change-password',[dashboardController::class,'change_password'])->name('change_password');
-    Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+Route::get('change-password',[dashboardController::class,'change_password_view'])->name('change_password_view');
+Route::post('change-password',[dashboardController::class,'change_password'])->name('change_password');
+Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
     // author CRUD
     Route::get('/authors', [AutherController::class, 'index'])->name('authors');
@@ -81,8 +82,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/student/create', [StudentController::class, 'store'])->name('student.store');
     Route::get('/student/show/{id}', [StudentController::class, 'show'])->name('student.show');
 
-
-
     Route::get('/book_issue', [BookIssueController::class, 'index'])->name('book_issued');
     Route::get('/book-issue/create', [BookIssueController::class, 'create'])->name('book_issue.create');
     Route::get('/book-issue/edit/{id}', [BookIssueController::class, 'edit'])->name('book_issue.edit');
@@ -99,4 +98,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings');
+
+    Route::get('/booking', [BookingController::class, 'update'])->name('booking');
+    Route::post('/booking', [BookingController::class, 'update'])->name('booking');
+
 });

@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="offset-md-4 col-md-4">
                     <div class="logo">
-                        <a href="#"><img src="{{ asset('images/library.png') }}"></a>
+                        <a href="#"><img src="{{ asset('images/library.jfif') }}"></a>
                     </div>
                 </div>
                 <div class="offset-md-2 col-md-2">
@@ -46,9 +46,6 @@
                 <div class="col-md-12">
                     <ul class="menu">
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('authors') }}">Authors</a></li>
-                        <li><a href="{{ route('publishers') }}">Publishers</a></li>
-                        <li><a href="{{ route('categories') }}">Categories</a></li>
                         <li><a href="{{ route('books') }}">Books</a></li>
                         <li><a href="{{ route('students') }}">Reg Students</a></li>
                         <li><a href="{{ route('book_issued') }}">Book Issue</a></li>
@@ -67,7 +64,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <span>© Copyright 2021 <a href="https://www.yahoobaba.net">YahooBaba 😎</a></span>
+                    <span>© Copyright 2022 JS Library 😎</a></span>
                 </div>
             </div>
         </div>

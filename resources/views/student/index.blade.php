@@ -69,7 +69,7 @@
     </div>
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript">
-        //Show shudent detail
+        //Show student detail
         $(".view-btn").on("click", function() {
             var student_id = $(this).data("sid");
             $.ajax({
